@@ -13,7 +13,7 @@ ReactDOM.render(
 
 // 2a
 const GrinchMusic = () => {
-    return `Blast this Christmas music! It's joyful and triumphant.`;
+    return <h1>Blast this Christmas music! It's joyful and triumphant.</h1>;
 }
 
 // 2b
@@ -41,6 +41,8 @@ ReactDOM.render(
 // 4a
 const GrinchSchedule = () => {
     return (
+        // Shortcut
+        // div>(ul>li*6)+p
         <div>
             <ul>
                 <li>4:00, wallow in self-pity.</li>
@@ -50,6 +52,7 @@ const GrinchSchedule = () => {
                 <li>6:30, dinner with me. I can't cancel that again.</li>
                 <li>7:00, wrestle with my self-loathing.</li>
             </ul>
+            <p>I'm booked. Of course, if I bump the loathing to 9, I could still be done in time to lay in bed, stare at the ceiling and slip slowly into madness.</p>
         </div>
     );
 }
@@ -64,7 +67,7 @@ ReactDOM.render(
 const GrinchPoster = () => {
     return (
         <img src="https://img01.mgo-images.com/image/thumbnail/v2/content/1MV1ca3f097dd209568db5d4a36e429dbda.jpeg" alt="" />
-    )
+    );
 }
 
 // 5b
@@ -117,8 +120,24 @@ ReactDOM.render(
 // 8a
 const DiceRoll = () => {
     // 8b
-    let randomNumber = Math.random();
-    randomNumber *= 6;
-    randomNumber = Math.floor(randomNumber);
-    randomNumber++;
+    const die1 = Math.floor(6 * Math.random()) + 1;
+    // 8c
+    const die2 = Math.floor(6 * Math.random()) + 1;
+
+    // Or
+    /*
+    roll = () => Math.floor(6 * Math.random()) + 1;
+    const die1 = roll();
+    const die2 = roll();
+    */
+    // 8d
+    return (
+        <h1>{(die1 === 1 && die2 === 1) ? "SNAKE EYES" : `${die1} & ${die2}`}</h1>
+    );
 }
+
+// 8e
+ReactDOM.render(
+    <DiceRoll />,
+    document.getElementById(`root`)
+);
